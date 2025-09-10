@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: "Reckless";
   src: url("/src/assets/RecklessNeueTRIAL-Book.otf") format("opentype");
@@ -13,9 +19,22 @@
   font-family: "Instrument Sans", sans-serif;
 }
 
-.reckless{
-    font-family: "Reckless";
+.reckless {
+  font-family: "Reckless";
+}
+
+.normal-cursor {
+  cursor: auto !important;
 }
 
 @layer base {
+  .center-x {
+    @apply left-[50%] translate-x-[-50%];
+  }
+  .center-y {
+    @apply top-[50%] translate-y-[-50%];
+  }
+  .center-x-y {
+    @apply top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%];
+  }
 }
