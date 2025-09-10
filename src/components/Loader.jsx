@@ -123,7 +123,7 @@ function PicsContainer({ className }) {
     gsap.to(".pics-container", {
       y: "-200vh",
       repeat: -1,
-      duration: 25,
+      duration: 65,
       ease: "none",
     });
   }, []);
