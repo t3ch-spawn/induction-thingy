@@ -17,16 +17,6 @@ export default function Loader() {
   const [isDraggable, setIsDraggable] = useState(true);
 
   useGSAP(() => {
-    // gsap.to(".pageOverlay", {
-    //   y: "0%",
-    //   duration: 1,
-    //   repeat: -1,
-    //   yoyo: true,
-    //   clipPath: "ellipse(140% 120% at  50% 100%)",
-    //   //   clipPath: "ellipse(49% 50% at 50% 50%)",
-    //   ease: "power2.inOut",
-    // });
-
     let split = SplitText.create(".split", {
       type: "words, lines",
       mask: "lines",
@@ -70,16 +60,16 @@ export default function Loader() {
       {/* Container for heading, subtext and btn */}
       <div className="flex flex-col items-center justify-center gap-[36px] max-w-[856px] text-center text-white relative z-[5] opacity-0 text-cont">
         {/* Heading */}
-        <h1 className="text-[72px] font-[300] leading-[130%] reckless split">
+        <h1 className="text-[72px] font-[300] leading-[130%] reckless split ">
           The Milestones that <br /> Shaped the Journey to <br /> this Day
         </h1>
 
         {/* White quotes */}
 
-        <img src={quotes} className="loader-quote" alt="" />
+        <img src={quotes} className="loader-quote " alt="" />
 
         {/* Sub text */}
-        <p className="instrument leading-[150%] tracking-[-0.02em] max-w-[400px] split">
+        <p className="instrument leading-[150%] tracking-[-0.02em] max-w-[400px] split ">
           A web chapter of your nursing journey built on learning, dedication,
           and strength.
         </p>
@@ -115,9 +105,10 @@ export default function Loader() {
 
                   // Trigger wishes link
                   const wishesLink = document.querySelector(".wishes-link");
-                  setTimeout(() => {
-                    wishesLink.click();
-                  }, 500);
+                  wishesLink.click();
+
+                  // setTimeout(() => {
+                  // }, 500);
                   return;
                 }
                 animate(
@@ -161,7 +152,8 @@ export default function Loader() {
 
             {/* Container for texts */}
             <div className="text-[14px] text-black ml-[10px] slide-text pointer-events-none relative z-[2]">
-              Slide to experience
+              {/* Slide to experience */}
+              Slide to next page
             </div>
           </div>
         </button>
@@ -181,7 +173,7 @@ export default function Loader() {
       </div>
 
       {/* page transition overlay */}
-      <div className="fixed w-[100vw] h-[200vh] top-0 bg-white z-[100] pageOverlay translate-y-[100vh]"></div>
+      <div className="fixed w-[100vw] h-[500vh] top-0 bg-white z-[100] pageOverlay translate-y-[100vh]"></div>
       {/* <div className="fixed w-[120vh] h-[100vw] top-[-45vh] bg-white z-[100] pageOverlay translate-y-[0%] rotate-90"></div> */}
 
       {/* <svg

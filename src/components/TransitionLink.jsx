@@ -35,25 +35,22 @@ export default function TransitionLink({
 
     gsap.timeline().to(".pageOverlay", {
       y: "-5%",
-      duration: 1.5,
-      ease: "power3.inOut",
-  
+      duration: 1,
+      ease: "power2.out",
     });
 
     const transTl = gsap
       .timeline()
-      .to(".pageOverlay", {
-        clipPath: "ellipse(50% 100% at  50% 100%)",
-        ease: "power1.inOut",
-        duration: 0.6,
-      })
+
       .to(".pageOverlay", {
         clipPath: "ellipse(165% 100% at  50% 100%)",
-        ease: "power1.in",
+        ease: "power2.inOut",
+        delay: 0.05,
+        duration: 0.7,
+
         onComplete: () => {
           navigate(href);
         },
-        duration: 0.9,
       });
   }
 

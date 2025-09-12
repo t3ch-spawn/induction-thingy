@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useEffect, useState } from "react";
 import quote from "@/assets/gray_quote.svg";
+import { SplitText } from "gsap/all";
 
 export default function Wishes() {
   let [wordCount, setWordCount] = useState(0);
@@ -46,12 +47,46 @@ export default function Wishes() {
 
     return () => clearInterval(interval);
   }, []);
-  return (
-    <main className="min-h-[100vh] flex flex-col justify-center items-center instrument  pb-[100px]">
-      {/* Heading */}
 
-      <div className="bg-white w-full pt-[100px] top-0 mx-auto flex justify-center items-center sticky">
-        <h1 className="reckless text-[64px] leading-[130%] max-w-[922px] text-center">
+  useGSAP(() => {
+    gsap.from(".dummy-text", {
+      opacity: 0,
+      duration: 1,
+    });
+
+    let split = SplitText.create(".split", {
+      type: "words",
+      mask: "words",
+      autoSplit: true,
+      onSplit: (self) => {
+        return gsap
+          .timeline()
+          .to(".text-cont", {
+            opacity: 1,
+            duration: 0.7,
+          })
+          .from(self.words, {
+            y: 80,
+            stagger: 0.05,
+            ease: "power2.out",
+          })
+          .from(
+            ".quotes-cont",
+            {
+              y: 70,
+              opacity: 0,
+              ease: "power1.out",
+            },
+            "<0.7"
+          );
+      },
+    });
+  }, []);
+  return (
+    <main className="min-h-[100vh] flex flex-col justify-center items-center instrument text-cont opacity-0  pb-[100px]">
+      {/* Heading */}
+      <div className="bg-[white]  z-[3] w-full pt-[100px] top-0 mx-auto flex justify-center items-center sticky ">
+        <h1 className="reckless text-[64px] leading-[130%] max-w-[922px] text-center split wishes-heading">
           Words of{" "}
           <span className="relative overflow-hidden">
             {" "}
@@ -69,9 +104,8 @@ export default function Wishes() {
           Love, and Support
         </h1>
       </div>
-
       {/* Containe for words */}
-      <div className="flex flex-col gap-[64px] justify-center items-center pt-[100px]">
+      <div className="flex flex-col gap-[64px] justify-center items-center pt-[100px] quotes-cont relative z-[2]">
         <QuoteCont />
         <QuoteCont />
         <QuoteCont />

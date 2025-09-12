@@ -5,9 +5,14 @@ import "./App.css";
 import Loader from "./components/Loader";
 import Wishes from "./components/Wishes";
 import { Routes, Route, Link } from "react-router-dom";
+import Lenis from "lenis";
 
 function App() {
   const [count, setCount] = useState(0);
+  // Initialize Lenis
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
 
   return (
     <>

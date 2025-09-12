@@ -48,7 +48,8 @@
 }
 
 .pageOverlay {
-  clip-path: ellipse(165% 100% at 50% 100%);
+  /* clip-path: ellipse(165% 100% at 50% 100%); */
+  clip-path: ellipse(50% 100% at 50% 100%);
   /* clip-path: ellipse(60% 100% at 50% 100%); */
   /* clip-path: ellipse(100% 60% at 100% 50%);  */
   /* background: linear-gradient(90deg, #8ec5ff, #e0c3fc); */
@@ -62,4 +63,30 @@
 
 .pageOverlay:hover {
   /* clip-path: inset(0 0 0 0 round 0% 0% 0 0); */
+}
+
+.wishes-heading::before {
+  background: linear-gradient(0deg, #fff0, #fff);
+  content: "";
+  height: 10rem;
+  left: 0;
+  position: absolute;
+  bottom: -10rem;
+  width: 100%;
+  z-index: 1;
+}
+
+/* For Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none; /* hides scrollbar */
+}
+
+/* For IE/Edge Legacy */
+html {
+  -ms-overflow-style: none;
 }
