@@ -2,10 +2,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useEffect, useState } from "react";
 import quote from "@/assets/gray_quote.svg";
-import { SplitText } from "gsap/all";
+import { ScrollTrigger, SplitText } from "gsap/all";
 
 export default function Wishes() {
   let [wordCount, setWordCount] = useState(0);
+
+  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,11 +51,6 @@ export default function Wishes() {
   }, []);
 
   useGSAP(() => {
-    gsap.from(".dummy-text", {
-      opacity: 0,
-      duration: 1,
-    });
-
     let split = SplitText.create(".split", {
       type: "words",
       mask: "words",
@@ -78,7 +75,34 @@ export default function Wishes() {
               ease: "power1.out",
             },
             "<0.7"
-          );
+          )
+          .from(".circles-cont", {
+            opacity: 0,
+          });
+      },
+    });
+
+    // Animation for circle in sync with scroll
+
+    const path = document.querySelector(".scroll-circle");
+
+    const pathLength = path.getTotalLength();
+
+    gsap.set(path, {
+      strokeDasharray: pathLength, // Total path length
+      strokeDashoffset: pathLength, // Initially hide the path
+    });
+
+    // Animate the stroke-dashoffset to reveal the path as the user scrolls
+    gsap.to(path, {
+      strokeDashoffset: 0, // Fully reveal the path
+      strokeDasharray: pathLength,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".quotes-cont",
+        scrub: true,
+        start: "top 270px",
+        end: "95% bottom",
       },
     });
   }, []);
@@ -110,6 +134,45 @@ export default function Wishes() {
         <QuoteCont />
         <QuoteCont />
         <QuoteCont />
+        <QuoteCont />
+        <QuoteCont />
+        <QuoteCont />
+        <QuoteCont />
+        <QuoteCont />
+      </div>
+
+      {/* Container for circles */}
+      <div className="fixed bottom-[36px] right-[36px] z-[20] size-[36px] circles-cont">
+        {/* Gray circle */}
+        <svg
+          width="36"
+          height="36"
+          viewBox="0 0 36 36"
+          className="absolute size-[36px] "
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle opacity="0.1" cx="18" cy="18" r="17.5" stroke="black" />
+        </svg>
+
+        {/* Black Circle */}
+        <svg
+          width="36"
+          height="36"
+          viewBox="0 0 36 36"
+          className="absolute size-[36px] rotate-[-90deg]"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            className="scroll-circle"
+            opacity="1"
+            cx="18"
+            cy="18"
+            r="17.5"
+            stroke="black"
+          />
+        </svg>
       </div>
     </main>
   );
