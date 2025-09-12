@@ -41,4 +41,25 @@
   .loader-pic {
     @apply absolute object-center bg-[#141316];
   }
+  /* 
+  .wishes-word {
+    @apply 
+  } */
+}
+
+.pageOverlay {
+  clip-path: ellipse(165% 100% at 50% 100%);
+  /* clip-path: ellipse(60% 100% at 50% 100%); */
+  /* clip-path: ellipse(100% 60% at 100% 50%);  */
+  /* background: linear-gradient(90deg, #8ec5ff, #e0c3fc); */
+  /* use both for better browser coverage */
+  /* -webkit-clip-path: url(#semiTopClip);
+  clip-path: url(#semiTopClip); */
+
+  /* clip-path: inset(0 0 0 0 round 140% 140% 0 0); */
+  /* transition: 0.7s ease-in-out; */
+}
+
+.pageOverlay:hover {
+  /* clip-path: inset(0 0 0 0 round 0% 0% 0 0); */
 }

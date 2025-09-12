@@ -8,32 +8,84 @@ import pic_2 from "@/assets/pic_2.webp";
 import pic_3 from "@/assets/pic_3.webp";
 import pic_4 from "@/assets/pic_4.webp";
 import pic_5 from "@/assets/pic_5.webp";
+import { SplitText } from "gsap/all";
+import { useGSAP } from "@gsap/react";
+import TransitionLink from "./TransitionLink";
 
 export default function Loader() {
   const bubbleConstraintRef = useRef(null);
   const [isDraggable, setIsDraggable] = useState(true);
 
+  useGSAP(() => {
+    // gsap.to(".pageOverlay", {
+    //   y: "0%",
+    //   duration: 1,
+    //   repeat: -1,
+    //   yoyo: true,
+    //   clipPath: "ellipse(140% 120% at  50% 100%)",
+    //   //   clipPath: "ellipse(49% 50% at 50% 50%)",
+    //   ease: "power2.inOut",
+    // });
+
+    let split = SplitText.create(".split", {
+      type: "words, lines",
+      mask: "lines",
+      autoSplit: true,
+      onSplit: (self) => {
+        return gsap
+          .timeline()
+          .to(".text-cont", {
+            opacity: 1,
+            duration: 1,
+          })
+          .from(self.lines, {
+            y: 80,
+            stagger: 0.2,
+            ease: "power2.out",
+          })
+          .from(
+            ".loader-quote",
+            {
+              y: 50,
+              opacity: 0,
+            },
+            "<"
+          )
+          .from(
+            ".button-cont",
+            {
+              y: 30,
+              opacity: 0,
+              duration: 0.7,
+              ease: "power2.out",
+            },
+            "<1.2"
+          );
+      },
+    });
+  });
+
   return (
-    <main className="min-h-[100vh] w-full bg-[#0A0A0A] flex flex-col items-center justify-center">
+    <main className="min-h-[100vh] w-full bg-[#0A0A0A] flex flex-col items-center justify-center page">
       {/* Container for heading, subtext and btn */}
-      <div className="flex flex-col items-center justify-center gap-[36px] max-w-[686px] text-center text-white relative z-[5]">
+      <div className="flex flex-col items-center justify-center gap-[36px] max-w-[856px] text-center text-white relative z-[5] opacity-0 text-cont">
         {/* Heading */}
-        <h1 className="text-[72px] font-[300] leading-[130%] reckless">
-          The Milestones that Shaped the Journey to this Day
+        <h1 className="text-[72px] font-[300] leading-[130%] reckless split">
+          The Milestones that <br /> Shaped the Journey to <br /> this Day
         </h1>
 
         {/* White quotes */}
 
-        <img src={quotes} alt="" />
+        <img src={quotes} className="loader-quote" alt="" />
 
         {/* Sub text */}
-        <p className="instrument leading-[150%] tracking-[-0.02em] max-w-[400px]">
+        <p className="instrument leading-[150%] tracking-[-0.02em] max-w-[400px] split">
           A web chapter of your nursing journey built on learning, dedication,
           and strength.
         </p>
 
         {/* Button */}
-        <div className="p-[3px] border border-[#FFFFFF66] rounded-[100px] w-[195px] h-[54px]">
+        <button className="p-[3px] border border-[#FFFFFF66] rounded-[100px] w-[195px] h-[54px] button-cont">
           {/* Actual container */}
           <div
             ref={bubbleConstraintRef}
@@ -57,10 +109,16 @@ export default function Loader() {
                 const difference = bubbleLeft - containerLeft;
 
                 if (difference > 146) {
-                  // setIsDraggable(false);
-                  // const bubble = document.querySelector(".black-bubble");
-                  // bubble.classList.add("normal-cursor");
-                  // return;
+                  setIsDraggable(false);
+                  const bubble = document.querySelector(".black-bubble");
+                  bubble.classList.add("normal-cursor");
+
+                  // Trigger wishes link
+                  const wishesLink = document.querySelector(".wishes-link");
+                  setTimeout(() => {
+                    wishesLink.click();
+                  }, 500);
+                  return;
                 }
                 animate(
                   ".black-bubble",
@@ -92,7 +150,7 @@ export default function Loader() {
                 });
                 // text.style.transform = `translateX(-${interpolated}%)`;
               }}
-              className="size-[36px] rounded-full bg-[#0A0A0A]  hover:cursor-grab black-bubble relative z-[3]"
+              className="size-[36px] rounded-full bg-[#0A0A0A]  hover:!cursor-grab black-bubble relative z-[3]"
             >
               <img
                 className="absolute center-x-y pointer-events-none"
@@ -106,7 +164,14 @@ export default function Loader() {
               Slide to experience
             </div>
           </div>
-        </div>
+        </button>
+
+        <TransitionLink
+          className="opacity-0 pointer-events-none wishes-link"
+          href={"/wishes"}
+        >
+          Wishes
+        </TransitionLink>
       </div>
 
       {/* Container for pics moving behind */}
@@ -114,6 +179,23 @@ export default function Loader() {
         <PicsContainer />
         <PicsContainer className="" />
       </div>
+
+      {/* page transition overlay */}
+      <div className="fixed w-[100vw] h-[200vh] top-0 bg-white z-[100] pageOverlay translate-y-[100vh]"></div>
+      {/* <div className="fixed w-[120vh] h-[100vw] top-[-45vh] bg-white z-[100] pageOverlay translate-y-[0%] rotate-90"></div> */}
+
+      {/* <svg
+          width="0"
+          height="0"
+          className="absolute left-0 top-0 pointer-events-none w-full h-full"
+          aria-hidden="true"
+        >
+          <defs>
+            <clipPath id="semiTopClip" clipPathUnits="objectBoundingBox">
+              <path d="M140 20C73 20 20 74 20 140c0 135 136 170 228 303 88-132 229-173 229-303 0-66-54-120-120-120-48 0-90 28-109 69-19-41-60-69-108-69z" />
+            </clipPath>
+          </defs>
+        </svg> */}
     </main>
   );
 }
