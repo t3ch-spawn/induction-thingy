@@ -3,6 +3,7 @@ import gsap from "gsap";
 import React, { useEffect, useState } from "react";
 import quote from "@/assets/gray_quote.svg";
 import { ScrollTrigger, SplitText } from "gsap/all";
+import Navbar from "./Navbar";
 
 export default function Wishes() {
   let [wordCount, setWordCount] = useState(0);
@@ -58,9 +59,15 @@ export default function Wishes() {
       onSplit: (self) => {
         return gsap
           .timeline()
-          .to(".text-cont", {
+          .to("main", {
+            backgroundColor: "white",
+            duration: 1,
+            delay: 0.1,
+            ease: "power1.inOut",
+          })
+          .to(".heading-cont", {
             opacity: 1,
-            duration: 0.7,
+            duration: 0,
           })
           .from(self.words, {
             y: 80,
@@ -107,9 +114,11 @@ export default function Wishes() {
     });
   }, []);
   return (
-    <main className="min-h-[100vh] flex flex-col justify-center items-center instrument text-cont opacity-0  pb-[100px]">
+    <main className="min-h-[100vh] w-full flex flex-col justify-center items-center instrument  pb-[100px] bg-black">
+      <Navbar />
+
       {/* Heading */}
-      <div className="bg-[white]  z-[3] w-full pt-[100px] top-0 mx-auto flex justify-center items-center sticky ">
+      <div className="bg-[white] heading-cont opacity-0 z-[3] w-full pt-[100px] top-0 mx-auto flex justify-center items-center sticky ">
         <h1 className="reckless text-[64px] leading-[130%] max-w-[922px] text-center split wishes-heading">
           Words of{" "}
           <span className="relative overflow-hidden">

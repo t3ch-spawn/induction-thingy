@@ -8,6 +8,7 @@ import pic_2 from "@/assets/pic_2.webp";
 import pic_3 from "@/assets/pic_3.webp";
 import pic_4 from "@/assets/pic_4.webp";
 import pic_5 from "@/assets/pic_5.webp";
+import white_name from "@/assets/white_name.svg";
 import { SplitText } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import TransitionLink from "./TransitionLink";
@@ -57,8 +58,11 @@ export default function Loader() {
 
   return (
     <main className="min-h-[100vh] w-full bg-[#0A0A0A] flex flex-col items-center justify-center page">
+      {/* Her name */}
+      <img src={white_name} className="fixed top-[34px] center-x z-[5]" alt="" />
+
       {/* Container for heading, subtext and btn */}
-      <div className="flex flex-col items-center justify-center gap-[36px] max-w-[856px] text-center text-white relative z-[5] opacity-0 text-cont">
+      <div className="flex flex-col items-center justify-center gap-[36px] max-w-[856px] text-center text-white relative z-[5] opacity-0 text-cont ">
         {/* Heading */}
         <h1 className="text-[72px] font-[300] leading-[130%] reckless split ">
           The Milestones that <br /> Shaped the Journey to <br /> this Day
@@ -159,8 +163,8 @@ export default function Loader() {
         </button>
 
         <TransitionLink
-          className="opacity-0 pointer-events-none wishes-link"
-          href={"/wishes"}
+          className="opacity-0 fixed pointer-events-none wishes-link"
+          href={"/home"}
         >
           Wishes
         </TransitionLink>
@@ -175,19 +179,6 @@ export default function Loader() {
       {/* page transition overlay */}
       <div className="fixed w-[100vw] h-[250vh] top-0 bg-white z-[100] pageOverlay translate-y-[100vh]"></div>
       {/* <div className="fixed w-[120vh] h-[100vw] top-[-45vh] bg-white z-[100] pageOverlay translate-y-[0%] rotate-90"></div> */}
-
-      {/* <svg
-          width="0"
-          height="0"
-          className="absolute left-0 top-0 pointer-events-none w-full h-full"
-          aria-hidden="true"
-        >
-          <defs>
-            <clipPath id="semiTopClip" clipPathUnits="objectBoundingBox">
-              <path d="M140 20C73 20 20 74 20 140c0 135 136 170 228 303 88-132 229-173 229-303 0-66-54-120-120-120-48 0-90 28-109 69-19-41-60-69-108-69z" />
-            </clipPath>
-          </defs>
-        </svg> */}
     </main>
   );
 }
