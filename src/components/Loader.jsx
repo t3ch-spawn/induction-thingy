@@ -173,7 +173,7 @@ export default function Loader() {
       </div>
 
       {/* page transition overlay */}
-      <div className="fixed w-[100vw] h-[500vh] top-0 bg-white z-[100] pageOverlay translate-y-[100vh]"></div>
+      <div className="fixed w-[100vw] h-[250vh] top-0 bg-white z-[100] pageOverlay translate-y-[100vh]"></div>
       {/* <div className="fixed w-[120vh] h-[100vw] top-[-45vh] bg-white z-[100] pageOverlay translate-y-[0%] rotate-90"></div> */}
 
       {/* <svg
