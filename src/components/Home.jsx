@@ -2,11 +2,12 @@ import React from "react";
 import Navbar from "./Navbar";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { TransitionOverlay } from "./TransitionLink";
 
 export default function Home() {
   useGSAP(() => {
     gsap.to(".home-page", {
-      opacity: 1,   
+      opacity: 1,
     });
   }, []);
   return (
@@ -15,7 +16,7 @@ export default function Home() {
 
       <main></main>
 
-      <div className="fixed w-[100vw] h-[250vh] top-0 bg-black z-[100] pageOverlay translate-y-[100vh]"></div>
+      <TransitionOverlay className="bg-black" />
     </div>
   );
 }

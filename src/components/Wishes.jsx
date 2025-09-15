@@ -118,7 +118,7 @@ export default function Wishes() {
       <Navbar />
 
       {/* Heading */}
-      <div className="bg-[white] heading-cont opacity-0 z-[3] w-full pt-[100px] top-0 mx-auto flex justify-center items-center sticky ">
+      <div className="bg-[white] heading-cont opacity-0 z-[3] w-full pt-[100px] top-[68px] mx-auto flex justify-center items-center sticky ">
         <h1 className="reckless text-[64px] leading-[130%] max-w-[922px] text-center split wishes-heading">
           Words of{" "}
           <span className="relative overflow-hidden">

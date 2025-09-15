@@ -11,7 +11,7 @@ import pic_5 from "@/assets/pic_5.webp";
 import white_name from "@/assets/white_name.svg";
 import { SplitText } from "gsap/all";
 import { useGSAP } from "@gsap/react";
-import TransitionLink from "./TransitionLink";
+import TransitionLink, { TransitionOverlay } from "./TransitionLink";
 
 export default function Loader() {
   const bubbleConstraintRef = useRef(null);
@@ -59,7 +59,11 @@ export default function Loader() {
   return (
     <main className="min-h-[100vh] w-full bg-[#0A0A0A] flex flex-col items-center justify-center page">
       {/* Her name */}
-      <img src={white_name} className="fixed top-[34px] center-x z-[5]" alt="" />
+      <img
+        src={white_name}
+        className="fixed top-[34px] center-x z-[5]"
+        alt=""
+      />
 
       {/* Container for heading, subtext and btn */}
       <div className="flex flex-col items-center justify-center gap-[36px] max-w-[856px] text-center text-white relative z-[5] opacity-0 text-cont ">
@@ -177,7 +181,7 @@ export default function Loader() {
       </div>
 
       {/* page transition overlay */}
-      <div className="fixed w-[100vw] h-[250vh] top-0 bg-white z-[100] pageOverlay translate-y-[100vh]"></div>
+      <TransitionOverlay className="bg-white" />
       {/* <div className="fixed w-[120vh] h-[100vw] top-[-45vh] bg-white z-[100] pageOverlay translate-y-[0%] rotate-90"></div> */}
     </main>
   );

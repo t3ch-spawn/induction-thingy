@@ -60,3 +60,9 @@ export default function TransitionLink({
     </a>
   );
 }
+
+export function TransitionOverlay({className}) {
+  return (
+    <div className={`fixed w-[100vw] h-[110vh] top-0 z-[100] pageOverlay translate-y-[100vh] ${className}`}></div>
+  );
+}
