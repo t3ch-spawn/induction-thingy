@@ -65,6 +65,11 @@ export default function Wishes() {
             delay: 0.1,
             ease: "power1.inOut",
           })
+          .to(".nav", {
+            backgroundColor: "white",
+            duration: 0,
+            ease: "none",
+          })
           .to(".heading-cont", {
             opacity: 1,
             duration: 0,

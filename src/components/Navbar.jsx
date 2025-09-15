@@ -12,7 +12,7 @@ export default function Navbar() {
   const formatted = `${dayMonth}, ${year}`;
 
   return (
-    <nav className="flex justify-between items-center px-[24px] pr-[29px] pt-[28px] sticky top-0 z-[40] w-full bg-white">
+    <nav className="flex justify-between z-[40] items-center px-[24px] pr-[29px] pt-[28px] sticky top-0 w-full nav bg-transparent">
       {/* Container for links */}
       <div className="flex gap-[12px] justify-center items-center w-fit reckless text-[14px]">
         {/* Home btn */}

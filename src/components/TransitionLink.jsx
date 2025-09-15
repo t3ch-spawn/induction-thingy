@@ -34,7 +34,7 @@ export default function TransitionLink({
     }
 
     gsap.timeline().to(".pageOverlay", {
-      y: "-5%",
+      y: "-8%",
       duration: 1,
       ease: "power2.out",
     });
@@ -43,7 +43,7 @@ export default function TransitionLink({
       .timeline()
 
       .to(".pageOverlay", {
-        clipPath: "ellipse(165% 100% at  50% 100%)",
+        clipPath: "ellipse(135% 100% at  50% 100%)",
         ease: "power2.inOut",
         delay: 0.05,
         duration: 0.7,
@@ -63,6 +63,6 @@ export default function TransitionLink({
 
 export function TransitionOverlay({className}) {
   return (
-    <div className={`fixed w-[100vw] h-[110vh] top-0 z-[100] pageOverlay translate-y-[100vh] ${className}`}></div>
+    <div className={`fixed w-full top-0 h-[120vh] z-[200] pageOverlay translate-y-[100vh] ${className}`}></div>
   );
 }

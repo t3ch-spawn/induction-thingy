@@ -48,7 +48,7 @@
 }
 
 .pageOverlay {
-  /* clip-path: ellipse(165% 100% at 50% 100%); */
+  /* clip-path: ellipse(135% 100% at 50% 100%); */
   clip-path: ellipse(50% 100% at 50% 100%);
   /* clip-path: ellipse(60% 100% at 50% 100%); */
   /* clip-path: ellipse(100% 60% at 100% 50%);  */
