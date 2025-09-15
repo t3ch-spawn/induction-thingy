@@ -11,9 +11,7 @@ import Home from "./components/Home";
 function App() {
   const [count, setCount] = useState(0);
   // Initialize Lenis
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
+
 
   useEffect(() => {
     // window.addEventListener("popstate", () => {

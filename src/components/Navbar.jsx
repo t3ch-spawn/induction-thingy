@@ -35,9 +35,9 @@ export default function Navbar() {
       <img src={black_name} className="mr-[110px]" alt="" />
 
       {/* Container for timing and date */}
-      <div className="text-[14px] flex justify-center items-center gap-[16px] reckless">
-        <p className="text-[#00000066]">00:01</p>
-        <p className="text-black">
+      <div className="text-[14px] flex justify-center items-center gap-[16px] reckless ">
+        <p className="text-[#00000066] mix-blend-difference">00:01</p>
+        <p className="text-black mix-blend-difference">
           {dayMonth}, {year}
         </p>
       </div>

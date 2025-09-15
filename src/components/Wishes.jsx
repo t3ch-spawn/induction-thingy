@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import quote from "@/assets/gray_quote.svg";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Navbar from "./Navbar";
+import Lenis from "lenis";
 
 export default function Wishes() {
   let [wordCount, setWordCount] = useState(0);
@@ -11,6 +12,10 @@ export default function Wishes() {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
+    const lenis = new Lenis({
+      autoRaf: true,
+    });
+
     const interval = setInterval(() => {
       const allWords = document.querySelectorAll(".wishes-word");
 
