@@ -83,7 +83,7 @@ export default function Home() {
 
   return (
     <div className="home-page opacity-0">
-      <Navbar />
+      <Navbar className="pb-[20px]"/>
 
       <main className="w-full h-[100vh] overflow-hidden home-main cursor-grab">
         <InfiniteGridWrapper sources={sources} data={data} />

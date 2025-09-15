@@ -116,7 +116,7 @@ html {
 }
 
 #images .item .item-image {
-  will-change: transform;
+  overflow: hidden;
 }
 
 #images .item small {

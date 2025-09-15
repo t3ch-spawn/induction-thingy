@@ -2,7 +2,7 @@ import React from "react";
 import black_name from "@/assets/black_name.svg";
 import TransitionLink from "./TransitionLink";
 
-export default function Navbar() {
+export default function Navbar({className}) {
   const date = new Date();
   const options = { day: "2-digit", month: "short" };
   const dayMonth = date.toLocaleDateString("en-GB", options);
@@ -12,7 +12,7 @@ export default function Navbar() {
   const formatted = `${dayMonth}, ${year}`;
 
   return (
-    <nav className="flex justify-between z-[40] items-center px-[24px] pr-[29px] pt-[28px] sticky top-0 w-full nav bg-transparent">
+    <nav className={`flex justify-between z-[40] items-center px-[24px] pr-[29px] pt-[28px] sticky top-0 w-full nav bg-transparent ${className}`}>
       {/* Container for links */}
       <div className="flex gap-[12px] justify-center items-center w-fit reckless text-[14px]">
         {/* Home btn */}
